@@ -1,0 +1,534 @@
+:root {
+  --primary-color: #E2933C;
+  --text-color: #E0E0E0;
+  --dark-background: #1C1C1D;
+  --light-text: #F0F0F0;
+  --font-serif: 'Playfair Display', serif; 
+  --font-sans: 'Open Sans', sans-serif;
+}
+
+.ingredient-page {
+  background: var(--dark-background);
+  color: var(--text-color);
+  min-height: 100vh;
+  /* Removed side padding to handle full-width elements better */
+  padding: 0 0 20px 0; 
+  font-family: var(--font-sans);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --- Header / Top Bar (Desktop Base) --- */
+.ingredient-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Restored to relative for normal flow */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px 0 40px; 
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.bell-icon {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 11;
+  padding: 0;
+}
+
+.bell-icon .icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 22px; 
+}
+
+/* --- Promo Banner (Hero Section) RESTORED DESKTOP LAYOUT --- */
+
+/* Orange Banner on the Right */
+.promo-banner {
+  position: absolute; 
+  top: 0;
+  left: 70%;
+  right: 0; /* Position on the right */
+  width: 50%; /* Desktop width */
+  height: 60vh; /* Desktop height */
+  background: var(--primary-color);
+  border-radius: 0 0 0 50%; /* Curve bottom left */
+  padding: 40px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* Text Container on the Left */
+.banner-text {
+  /* Text now sits on the left side, within the dark background */
+  position: absolute; /* Changed back to absolute for desktop */
+  top: 150px;
+  left: 40px; /* Aligned left on dark background */
+  width: 50%;
+  height: calc(60vh - 120px);
+  z-index: 3;
+  color: var(--light-text); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Left aligned on desktop */
+  padding: 0 40px;
+  text-align: left; /* Left aligned on desktop */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.banner-text h2 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left align on desktop */
+  font-family: var(--font-serif);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.banner-text h2 .are-you {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.banner-text h2 .hungry {
+  color: #c9792f; /* Darker orange on desktop text */
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-text p {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin: 5px 0 30px 0;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+}
+
+.banner-button {
+  display: inline-block;
+  padding: 15px 40px;
+  background-color: var(--primary-color);
+  color: var(--dark-background);
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  box-shadow: 0 8px 20px rgba(226, 147, 60, 0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 6;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.banner-button:hover {
+  background-color: #f0a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Image Container on the Right, Overlapping */
+.banner-image {
+  position: absolute;
+  left: calc(70% - 32.5vh); /* Half on black background, half on promo banner */
+  top: 12vh;
+  height: 65vh;
+  width: 65vh;
+  z-index: 2;
+}
+
+.banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translateX(150px) rotate(0deg);
+  filter: blur(8px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.banner-image img.animate {
+  opacity: 1;
+  transform: translateX(0) rotate(360deg);
+  filter: blur(0);
+}
+
+
+/* Dish Container below the desktop hero */
+.dish-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  padding: 20px 0;
+  margin-top: 70vh; /* Below the 60vh banner height + some margin */
+}
+
+.dish-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll-left 25s linear infinite;
+}
+
+.dish-track img {
+  height: 120px;
+  width: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.dish-track img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* --- Input and Results Sections (Desktop Base) --- */
+
+.ingredient-input-section {
+  text-align: center;
+  margin: 50px auto 80px auto;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+  z-index: 4;
+  box-sizing: border-box;
+}
+
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  margin-bottom: 50px;
+  color: #F0F0F0;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.input-container input {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: var(--light-text);
+  width: 250px;
+}
+
+.input-container input:focus {
+  border: 1px solid var(--primary-color);
+  outline: none;
+}
+
+.input-container button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.input-container button:hover {
+  background: #c9792f;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.ingredient-chip {
+  background: #2a2a2a;
+  border: 1px solid var(--primary-color);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.ingredient-chip span {
+  margin-left: 6px;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.search-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.search-recipe-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.search-recipe-btn:hover {
+  background: #c9792f;
+}
+
+.popular-recipes-heading {
+  color: white;
+  font-size: 32px;
+  text-align: left;
+  margin-top: 5vh;
+  margin-bottom: 40px;
+  font-family: var(--font-serif);
+  padding-left: 60px;
+}
+
+.recipe-cards-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 20px 60px 40px 60px;
+  position: relative;
+  z-index: 3;
+  overflow: visible;
+}
+
+.no-recipes-message {
+  text-align: center;
+  color: #ff6b6b;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 40px 0;
+  padding: 20px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 8px;
+  border: 1px solid #ff6b6b;
+  grid-column: 1 / -1; /* Span all columns in the grid */
+}
+
+
+/* ======================================= */
+/* RESPONSIVE STYLES (Mobile First Overrides) */
+/* ======================================= */
+@media (max-width: 1024px) {
+    /* Adjust grid to 2 columns for tablets and medium screens */
+    .recipe-cards-section {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px 30px 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+  /* --- Header Fixes (Bell icon on right side) --- */
+  .ingredient-header {
+      padding: 20px 15px 0 15px; /* Tighter padding on sides */
+  }
+
+  .bell-icon {
+    right: 15px;
+  }
+  .bell-icon .icon {
+    font-size: 24px; /* Decreased from 30px to 24px for mobile */
+  }
+  /* --- Hero Section Mobile Overrides (Orange on top, curve at bottom) --- */
+  
+  /* Orange Banner on Top */
+  .promo-banner {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 200px; 
+    min-height: 150px;
+    margin-top: 0; 
+    border-radius: 0 0 50% 50%; /* Curve the bottom edges */
+    z-index: 2; 
+  }
+  
+  /* Text container sits below the orange banner */
+  .banner-text {
+    position: relative; /* Relative position for mobile flow */
+    top: 20px;
+    margin-top: 250px; /* Place fully below the orange banner */
+    left: auto;
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+    min-height: 100px;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align for mobile */
+    text-align: center;
+    color: var(--light-text);
+  }
+
+  .banner-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .banner-text.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .banner-text h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align for mobile */
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .banner-text h2 .are-you {
+    font-size: 1.8rem;
+    line-height: 1.1;
+    margin-bottom: 5px;
+    
+  }
+
+  .banner-text h2 .hungry {
+    color: var(--primary-color); /* Orange on black for contrast */
+    font-size: 3rem;
+    line-height: 1.0;
+    margin-bottom: 0;
+      }
+
+  .banner-text p {
+    font-size: 1rem;
+    margin: 10px 0 20px 0;
+    line-height: 1.4;
+  }
+
+  .banner-button {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+  
+  /* Image container small and centered, floating over the orange area */
+  .banner-image {
+    position: absolute; 
+    left: 50%;
+    top: 150px; /* Adjusted to position half on orange (ends at 250px) and half on black */
+    transform: translateX(-50%); 
+    margin: 0;
+    height: 180px; 
+    width: 180px;
+    z-index: 5; 
+  }
+  
+  /* Dish Container adjustment: Push it below the content */
+  .dish-container {
+    margin-top: 40px; /* Adjusted to sit after the banner text on mobile */
+  }
+  
+  /* --- Input and Results Sections Mobile Overrides --- */
+  
+  .ingredient-input-section {
+    width: 100%;
+    max-width: none;
+    padding: 20px 15px;
+    margin: 30px auto;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  /* Stack input and button for narrow screens */
+  .input-container {
+    flex-direction: column; 
+    gap: 15px;
+  }
+  
+  .input-container input {
+    width: 100%; 
+    box-sizing: border-box;
+  }
+  
+  .popular-recipes-heading {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-cards-section {
+    grid-template-columns: 1fr;
+    padding: 0 15px 30px 15px;
+    gap: 15px;
+  }
+
+  .no-recipes-message {
+    font-size: 16px;
+    padding: 15px;
+    margin: 20px 0;
+  }
+}

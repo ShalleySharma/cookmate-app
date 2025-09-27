@@ -1,0 +1,89 @@
+/* src/components/Ingredient/InputRecipeCard.css */
+.input-recipe-card {
+  background: #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #E0E0E0;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.input-recipe-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.input-recipe-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.input-recipe-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.input-recipe-content {
+  padding: 16px;
+}
+
+.input-recipe-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: #F0F0F0;
+  margin-bottom: 8px;
+}
+
+.input-recipe-description {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 12px;
+}
+
+.input-view-btn {
+  background: #E2933C;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.input-view-btn:hover {
+  background: #c9792f;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .input-recipe-card {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .input-recipe-img {
+    height: 150px;
+  }
+
+  .input-recipe-title {
+    font-size: 18px;
+  }
+
+  .input-recipe-description {
+    font-size: 13px;
+  }
+
+  .input-view-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}

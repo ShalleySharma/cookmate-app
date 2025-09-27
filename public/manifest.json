@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CookMate",
+  "name": "CookMate – \"Your smart recipe companion.\"",
   "icons": [
     {
       "src": "favicon.ico",
