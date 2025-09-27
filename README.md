@@ -59,10 +59,10 @@ https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken
 
 ## 📌 Future Enhancements
 
-⭐ Save favorite recipes to profile.
-📝 Add meal planning for the week.
-🌎 Multi-language support.
-📱 Publish as a PWA (mobile app-like).
+-⭐ Save favorite recipes to profile.
+-📝 Add meal planning for the week.
+-🌎 Multi-language support.
+-📱 Publish as a PWA (mobile app-like).
 
 
 
