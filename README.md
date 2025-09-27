@@ -5,7 +5,7 @@ CookMate is a smart recipe web application that helps you discover delicious mea
 Simply enter your ingredients, and CookMate will instantly fetch matching recipes from TheMealDB API.
 
 🌐 Live Demo
-👉 Click here to try CookMate(Deploy link will be added soon)
+👉 Click here to try CookMate (https://cookmate-app.vercel.app/)
 
 ## ✨ Features
 
